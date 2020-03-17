@@ -5,13 +5,10 @@
     </v-app-bar>
     <v-content>
       <v-container fluid>
-        <v-btn class="mb-5" v-customOn:click="clicked">Click Me</v-btn>
-        <v-divider></v-divider>
-        <div
-          class="buttomGreen"
-          v-customOn:mouseenter="mouseEnter"
-          v-customOn:mouseleave="mouseLeave"
-        ></div>
+        <p>{{ firstText | reverse }}</p>
+        <p>{{ secondText | calculateLength }}</p>
+        <p>{{ reversed }}</p>
+        <p>{{ lengthAware }}</p>
       </v-container>
     </v-content>
     <v-footer>
@@ -23,40 +20,34 @@
 <script>
 import AppHeader from "./components/Shared/Header";
 import AppFooter from "./components/Shared/Footer";
+import { lengthAwareMixin } from "./lengthAwareMixin"
 
 export default {
+  mixins: [lengthAwareMixin],
   name: "App",
+  data: () => {
+    return {
+      firstText: 'My name reverse',
+      secondText: 'Luciano'
+    }
+  },
+  filters: {
+    reverse(value) {
+      return value.split("").reverse().join("");
+    }
+  },
   components: {
     AppHeader,
     AppFooter,
   },
-  directives: {
-    customOn: {
-      bind(el, binding) {
-        const type = binding.arg;
-        const fn = binding.value;
-        el.addEventListener(type, fn);
-      }
-    }
-  },
-  methods: {
-    clicked() {
-      alert('I was clicked');
-    },
-    mouseEnter() {
-      alert('Mouse entered!');
-    },
-    mouseLeave() {
-      alert('Mouse Leave!')
+  computed: {
+    reversed() {
+      return this.firstText.split("").reverse().join("");
     }
   }
 };
 </script>
 
 <style scoped>
-  .buttomGreen {
-    width: 100px;
-    height: 100px;
-    background-color: lightgreen;
-  }
+
 </style>
