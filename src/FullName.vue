@@ -18,9 +18,9 @@ export default {
     nameChanged(isFirst, event) {
       let name = '';
       if (isFirst) {
-        name = event.target.value + ' ' + this.lastName;
+        name = event + ' ' + this.lastName;
       } else {
-        name = this.firstName + ' ' + event.target.value;
+        name = this.firstName + ' ' + event;
       }
       this.value = name;
       this.$emit('input', this.value);

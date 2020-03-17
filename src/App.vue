@@ -23,7 +23,7 @@
               </v-radio-group>
             </v-col>
           </v-row>
-          <v-row>
+          <v-row class="mb-10">
             <v-btn
               type="submit"
               @click.prevent="submitted=true"
