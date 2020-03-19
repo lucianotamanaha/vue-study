@@ -2,7 +2,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <footer>
-                    <p>Vue</p>
+                    <p>Vue Study</p>
                 </footer>
             </div>
         </div>
